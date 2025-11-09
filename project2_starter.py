@@ -119,7 +119,7 @@ class Player(Character):
         Should call the parent constructor and add player-specific attributes.
         """
         super().__init__(name, health, strength, magic)
-        self.class_ = character_class
+        self.character_class = character_class
         self.level = level
         # TODO: Call super().__init__() with the basic character info
         # TODO: Store the character_class (like "Warrior", "Mage", etc.)
@@ -133,7 +133,7 @@ class Player(Character):
         super().display_stats()
         # I don't necessarily understand why we call
         # super() instead of Character if it does the same thing
-        print(f"Character class: {self.class_}")
+        print(f"Character class: {self.character_class}")
         print(f"Character level: {self.level}")
         # TODO: Call the parent's display_stats method using super()
         # TODO: Then print additional player info like class and level
@@ -244,8 +244,11 @@ class Rogue(Player):
         chance = random.randint(1, 10)
         if chance <= 8:
             target.take_damage(regular_damage)
+            print(f"{self.name} attacks {target.name} for {regular_damage} damage!")
         else:
             target.take_damage(critical_hit)
+            print(f"{self.name} attacks {target.name} for {critical_hit} damage!")
+
         # TODO: Implement rogue attack
         # Could add a chance for critical hit (double damage)
         # Hint: use random.randint(1, 10) and if result <= 3, it's a crit
@@ -295,15 +298,11 @@ if __name__ == "__main__":
     warrior =  Warrior("Thorfinn Karlsefni")
     mage = Mage("Nobara Kugisaki")
     rogue = Rogue("Arya Stark")
-
     # TODO: Create one of each character type
     # warrior = Warrior("Sir Galahad")
     # mage = Mage("Merlin")
     # rogue = Rogue("Robin Hood")
-    print("\n📊 Character Stats:")
-    warrior.display_stats()
-    mage.display_stats()
-    rogue.display_stats()
+
     # TODO: Display their stats
     print("\n📊 Character Stats:")
     warrior.display_stats()
@@ -344,3 +343,4 @@ if __name__ == "__main__":
     battle.fight()
 
     print("\n✅ Testing complete!")
+
