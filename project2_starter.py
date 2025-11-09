@@ -113,7 +113,7 @@ class Player(Character):
     Inherits from Character and adds player-specific features.
     """
 
-    def __init__(self, name, character_class, health, strength, magic, level):
+    def __init__(self, name, character_class, health, strength, magic, level=1):
         """
         Initialize a player character.
         Should call the parent constructor and add player-specific attributes.
@@ -343,4 +343,3 @@ if __name__ == "__main__":
     battle.fight()
 
     print("\n✅ Testing complete!")
-
